@@ -1,0 +1,24 @@
+END USER LICENSE AGREEMENT (EULA) FOR OSMUS
+Copyright (c) 2026 Osmus / Sumer Alhussein. All rights reserved.
+
+1. GRANT OF LICENSE
+The developer grants you a personal, non-exclusive, non-transferable license to download, install, and use this Autodesk Revit add-in ("Software") for both commercial and non-commercial design workflows, subject to the terms of this agreement.
+
+2. RESTRICTIONS
+You may not:
+- Reverse engineer, decompile, disassemble, or derive source code from the compiled binaries.
+- Modify, adapt, translate, or create derivative works of the Software.
+- Rent, lease, sell, sublicense, or redistribute the Software binaries without prior written consent.
+- Remove or obscure any proprietary notices, labels, or marks on the Software.
+
+3. FUTURE FEATURES AND MONETIZATION
+The developer reserves the right to introduce premium tiers, paid features, or subscription plans in future updates. Existing free functionalities may be updated, modified, or tiered at the developer's discretion.
+
+4. THIRD-PARTY TRADEMARKS
+Autodesk, Revit, and related marks are trademarks or registered trademarks of Autodesk, Inc. This Software is an independent add-in and is not affiliated with, endorsed by, or sponsored by Autodesk, Inc.
+
+5. TERMINATION
+This agreement is effective until terminated. Your rights under this license will terminate automatically without notice if you fail to comply with any of its terms. Upon termination, you must cease all use and delete all copies of the Software.
+
+6. DISCLAIMER OF WARRANTY & LIMITATION OF LIABILITY
+The Software is provided "AS IS", without warranty of any kind, express or implied. In no event shall the author or copyright holders be liable for any damages (including, without limitation, damages for loss of business data, BIM model corruption, or project delays) arising out of the use or inability to use this Software.
