@@ -7,6 +7,7 @@
   <a href="#installation">Installation</a> ·
   <a href="#tools">Tools</a> ·
   <a href="#changelog">Changelog</a> ·
+  <a href="#contributors">Contributors</a> ·
   <a href="https://github.com/sumer-alhussein/Osmus-download/issues">Report an issue</a>
 </p>
 
@@ -186,6 +187,16 @@ The tools are grouped the way they appear in the ribbon.
 
 ## 25.04.01
 - First public release of Osmus.
+
+# Contributors
+
+| Release | Contributors |
+|---|---|
+| 1.4.0 | Sumer Alhussein |
+| 25.05.01 | Sumer Alhussein |
+| 25.04.01 | Sumer Alhussein, Ghanem Ghanem, Mahmoud Al-Bzour |
+
+Osmus started from the [geeWiz](https://github.com/aussieBIMguru/geeWiz) add-in template by Gavin Crump (MIT).
 
 # License and support
 
