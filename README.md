@@ -22,7 +22,8 @@ productivity tools for BIM managers, architects and engineers:
 - **Model tools** — batch find/replace in model text, re-center rooms, create stair paths for whole floor plans, create standard worksets.
 - **Cleanup** — purge unused view templates and filters, unplaced rooms and imported patterns.
 - **Session helpers** — colour view tabs per document, switch the UI theme, and a *Warden* that double-checks risky commands.
-- **Exports Manager** — batch export sheets and views to **PDF, DWG and DWF/DWFx** with saved profiles and custom file naming rules.
+- **Exports Manager** — batch export sheets and views to **PDF, DWG and DWF/DWFx** with saved profiles and custom file naming rules,
+  and an export monitor to follow every file, cancel, and retry the ones that failed.
 
 Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com**
 
@@ -58,7 +59,7 @@ Windows SmartScreen may show *"Windows protected your PC"*: click **More info �
 <summary>Silent install (IT deployment)</summary>
 
 ```bat
-msiexec /i Osmus-1.4.0-MultiUser.msi /qn
+msiexec /i Osmus-1.5.0-MultiUser.msi /qn
 ```
 Installs every Revit version silently (log with `/l*v osmus-install.log`).
 </details>
@@ -156,9 +157,30 @@ The tools are grouped the way they appear in the ribbon.
    have separate rules; the defaults are `<Sheet Number> - <Sheet Name>` and `<View Name>`.
 6. **Export PDF / DWF / DWG** — switch each format on or off and open its options (paper, zoom, colours, raster
    quality, *Combine into a single file*, DWG export setup, xrefs…).
-7. **Export** — runs the exports and shows a report of what was written.
+7. **Export** — opens the **export monitor**, which exports the files one by one and shows each of them with its
+   format and status, a progress ring with the percentage, the start time, the elapsed time and an estimate of the
+   time left. A file that could not be written (for example a PDF that is still open in a viewer) is marked as
+   failed with the reason: close the file and click **Retry** on that row, or **Retry failed** for all of them.
+   **Cancel** stops after the current file; **Resume** picks up the remaining ones. **Open export folder** opens
+   the destination and **Open log** the log of the run (`%TEMP%\Osmus\Logs`), handy when reporting a problem.
+
+<p align="center">
+  <img src="docs/images/export-monitor.png" width="620" alt="The export monitor while exporting" />
+</p>
 
 # Changelog
+
+## 1.5.0
+
+**Exports Manager**
+- Export monitor: the *Export Complete* dialog is replaced by a window that follows the export file by file, with a
+  progress ring and percentage, the start time, the elapsed and the estimated remaining time. You can cancel the run,
+  see why a file failed and retry it (or all failed files), and open the export folder or the log from there.
+- A file that is open in another program (for example the previous PDF in a viewer) was reported as exported although
+  nothing was written; it is now reported as failed with the reason, and can be retried after closing it.
+- Sheet or view names with characters Windows does not allow in file names no longer fail the PDF and DWG exports.
+- Every export is logged to `%TEMP%\Osmus\Logs` (add-in and Revit versions, project, settings, one line per file with
+  its duration or error).
 
 ## 1.4.0
 
@@ -192,6 +214,7 @@ The tools are grouped the way they appear in the ribbon.
 
 | Release | Contributors |
 |---|---|
+| 1.5.0 | Sumer Alhussein |
 | 1.4.0 | Sumer Alhussein |
 | 25.05.01 | Sumer Alhussein |
 | 25.04.01 | Sumer Alhussein, Ghanem Ghanem, Mahmoud Al-Bzour |
