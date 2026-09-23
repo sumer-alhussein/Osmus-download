@@ -110,7 +110,7 @@ The tools are grouped the way they appear in the ribbon.
 | <img src="docs/images/tools/Import_CreateSheets.png" width="56" /> | **Create/ Update Sheets** | Creates the sheets listed in the template; sheet numbers that already exist get the name from the template instead. | Fill the template, click, pick the file, then pick the title block type for the new sheets. |
 | <img src="docs/images/tools/Revision_BulkRev.png" width="56" /> | **Bulk Revision** | Adds one revision to many sheets at once (sheets that already carry it are skipped). | Click, choose the revision, tick the sheets, *Finish*. **Shift + click** removes the revision from the ticked sheets instead. |
 | <img src="docs/images/tools/Revision_RevSet.png" width="56" /> | **Sheet Set by Revision** | Creates a sheet set (for printing/exporting) holding every sheet that carries the chosen revision. | Click, choose the revision. An existing set with that name is deleted and re-created. |
-| <img src="docs/images/tools/Sheets_SheetScaleParameter.png" width="56" /> | **Sheet Scale Parameter** | Copies each sheet's *Scale* (e.g. `1 : 100`) into a text parameter, so it can be scheduled or shown in title blocks. | Create a text parameter bound to *Sheets* (project or shared) first. Click, tick the sheets, choose the parameter, *Finish*. |
+| <img src="docs/images/tools/Sheets_SheetScaleParameter.png" width="56" /> | **Sheet Scale Parameter** | Copies each sheet's *Scale* (e.g. `1 : 100`) into a text parameter, so it can be scheduled or shown in title blocks. | Create a text parameter bound to *Sheets* (project or shared) first. Click: every sheet is selected — refine with `Ctrl + click`, `Shift + click` or the search box — choose the parameter on the left, *Copy Scale*. |
 
 ## Selection
 | | Tool | What it does | How to use |
@@ -134,7 +134,7 @@ The tools are grouped the way they appear in the ribbon.
 ## Annotate
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Tools_StairPathPro.png" width="56" /> | **Stair Path Pro** | Creates stair path annotations for every stair in the selected floor plans — including stairs from linked models if you want. | Click, choose the stair path type, tick *Include Linked Models* if needed, tick the plan views, *Finish*. |
+| <img src="docs/images/tools/Tools_StairPathPro.png" width="56" /> | **Stair Path Pro** | Creates stair path annotations for every stair in the selected floor plans — including stairs from linked models if you want. | Click: every floor plan is selected — refine with `Ctrl + click`, `Shift + click` or the search box — choose the stair path type (and whether to include linked models) on the left, *Create Paths*. |
 
 ## Collaboration
 | | Tool | What it does | How to use |
@@ -195,6 +195,13 @@ The tools are grouped the way they appear in the ribbon.
 
 # Changelog
 
+## 2.0.1
+
+- *Sheet Scale Parameter* and *Stair Path Pro* dialogs work like the Exports Manager: everything is selected when they
+  open, the selection shortcuts and the number of selected items are shown under the list, the options sit on the
+  left, and the action button says what it does (*Copy Scale*, *Create Paths*).
+- Stair Path Pro shows the level, scale and discipline of each floor plan.
+
 ## 2.0.0
 
 **New**
@@ -252,6 +259,7 @@ The tools are grouped the way they appear in the ribbon.
 
 | Release | Contributors |
 |---|---|
+| 2.0.1 | Sumer Alhussein |
 | 2.0.0 | Sumer Alhussein |
 | 1.5.0 | Sumer Alhussein |
 | 1.4.0 | Sumer Alhussein |
