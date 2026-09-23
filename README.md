@@ -5,6 +5,7 @@
 <p align="center">
   <a href="https://github.com/sumer-alhussein/Osmus-download/releases/latest"><b>Download the latest release</b></a> ·
   <a href="#installation">Installation</a> ·
+  <a href="#updates">Updates</a> ·
   <a href="#tools">Tools</a> ·
   <a href="#changelog">Changelog</a> ·
   <a href="#contributors">Contributors</a> ·
@@ -13,7 +14,7 @@
 
 # About Osmus
 
-**Osmus** is a free add-in for **Autodesk Revit 2023, 2024, 2025 and 2026** that adds an *Osmus* ribbon tab with
+**Osmus** is a free add-in for **Autodesk Revit 2023, 2024, 2025, 2026 and 2027** that adds an *Osmus* ribbon tab with
 productivity tools for BIM managers, architects and engineers:
 
 - **Sheet composition & revisions** — create and rename sheets from Excel, apply revisions in bulk, build sheet sets
@@ -24,6 +25,7 @@ productivity tools for BIM managers, architects and engineers:
 - **Session helpers** — colour view tabs per document, switch the UI theme, and a *Warden* that double-checks risky commands.
 - **Exports Manager** — batch export sheets and views to **PDF, DWG and DWF/DWFx** with saved profiles and custom file naming rules,
   and an export monitor to follow every file, cancel, and retry the ones that failed.
+- **Automatic updates** — new versions are downloaded in the background and installed when Revit closes.
 
 Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com**
 
@@ -31,7 +33,7 @@ Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com**
 
 ## Requirements
 - Windows 10/11, 64-bit
-- Autodesk Revit 2023, 2024, 2025 or 2026
+- Autodesk Revit 2023, 2024, 2025, 2026 or 2027
 
 ## Install
 1. Download an installer from the [releases page](https://github.com/sumer-alhussein/Osmus-download/releases/latest):
@@ -39,30 +41,52 @@ Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com**
    | File | Installs for | Location |
    |---|---|---|
    | `Osmus-<version>-SingleUser.msi` | You only — no administrator rights needed | `%AppData%\Autodesk\Revit\Addins\<year>` |
-   | `Osmus-<version>-MultiUser.msi` | Every user of the computer — needs administrator rights | `C:\ProgramData\Autodesk\Revit\Addins\<year>` |
+   | `Osmus-<version>-MultiUser.msi` | Every user of the computer — needs administrator rights | `C:\ProgramData\Autodesk\Revit\Addins\<year>`, and `C:\Program Files\Autodesk\Revit\Addins\2027` for Revit 2027 |
 
 2. **Close Revit**, run the installer and tick the Revit versions you use. It takes a few seconds.
 3. Start Revit: the **Osmus** tab appears in the ribbon. If Revit asks whether to load the add-in, choose *Always Load*.
 
-A newer version installs over the previous one — no need to uninstall first. Both installers are unsigned, so
-Windows SmartScreen may show *"Windows protected your PC"*: click **More info → Run anyway**.
+A newer version installs over the previous one — no need to uninstall first, and from 2.0.0 on Osmus installs new
+versions itself (see [Updates](#updates)). Both installers are unsigned, so Windows SmartScreen may show
+*"Windows protected your PC"*: click **More info → Run anyway**.
 
 <details>
 <summary>Alternative: Autodesk bundle</summary>
 
-`Osmus.bundle.zip` is the Autodesk application bundle. Extract it so that the files end up in
-`C:\ProgramData\Autodesk\ApplicationPlugins\Osmus.bundle\` (the `PackageContents.xml` must be directly inside
-`Osmus.bundle`). Revit loads the version matching each release automatically.
+`Osmus.bundle.zip` is the Autodesk application bundle. Extract it into a folder named `Osmus.bundle` (the
+`PackageContents.xml` must be directly inside it) in one of these folders:
+
+- `%AppData%\Autodesk\ApplicationPlugins` — for you only, every Revit version;
+- for every user: `C:\ProgramData\Autodesk\ApplicationPlugins` (Revit 2023–2026) and
+  `C:\Program Files\Autodesk\ApplicationPlugins` (Revit 2027, which no longer reads `C:\ProgramData`).
+
+Revit loads the version matching each release automatically.
 </details>
 
 <details>
 <summary>Silent install (IT deployment)</summary>
 
 ```bat
-msiexec /i Osmus-1.5.0-MultiUser.msi /qn
+msiexec /i Osmus-2.0.0-MultiUser.msi /qn
 ```
-Installs every Revit version silently (log with `/l*v osmus-install.log`).
+Installs every Revit version silently (log with `/l*v osmus-install.log`). Users who are not administrators are
+told about new versions in *About* but never get the Windows prompt: deploy updates the same way.
 </details>
+
+## Updates
+
+From version 2.0.0, Osmus keeps itself up to date:
+
+- When Revit starts, Osmus looks for a new version on this page in the background and downloads it — Revit never waits for it.
+- An **Update ready** button then appears on the *Osmus* tab: click it to restart Revit and install the update now.
+  Otherwise it installs when you close Revit (with the installer's progress bar; an all-users installation asks an
+  administrator to confirm).
+- The next time Revit starts, a message confirms the update — or, if it could not be installed, links to its download.
+- **About** shows the update status, a **Check now** button and the **Update automatically** switch (on by default).
+
+The update uses the same kind of installation as yours (single-user MSI, all-users MSI or bundle), and every download
+is checked against the checksum published with the release. Versions before 2.0.0 cannot update themselves: install
+2.0.0 once from the [releases page](https://github.com/sumer-alhussein/Osmus-download/releases/latest).
 
 ## Uninstall
 Windows **Settings → Apps → Installed apps → Osmus → Uninstall**, with Revit closed. The add-in files are removed
@@ -76,7 +100,8 @@ The tools are grouped the way they appear in the ribbon.
 ## Osmus
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/Osmus.png" width="56" /> | **About** | Shows the installed version, the Revit version and links to this page, the releases, documentation, license and contact. | Click *About*. |
+| <img src="docs/images/Osmus.png" width="56" /> | **About** | Shows the installed version, the Revit version and links to this page, the releases, documentation, license and contact — and the [updates](#updates): status, *Check now* and the *Update automatically* switch. | Click *About*. |
+| <img src="docs/images/tools/General_Update.png" width="56" /> | **Update ready** | Appears when a new version of Osmus has been downloaded. | Click to restart Revit and install it now; otherwise it installs when you close Revit. |
 
 ## Sheet Composition
 | | Tool | What it does | How to use |
@@ -170,6 +195,19 @@ The tools are grouped the way they appear in the ribbon.
 
 # Changelog
 
+## 2.0.0
+
+**New**
+- Revit 2027 support. The all-users installer puts the Revit 2027 add-in in `C:\Program Files\Autodesk\Revit\Addins\2027`,
+  where Revit 2027 now loads add-ins for all users.
+- [Automatic updates](#updates): Osmus checks for a new version when Revit starts, downloads it in the background and
+  installs it when Revit closes — or right away with the *Update ready* button. *About* has the update status,
+  *Check now* and an *Update automatically* switch (on by default). A message at the next start confirms the update.
+
+**Changes**
+- F1 on a ribbon button opens the tool's section of this page.
+- Warden, Colored Tabs and Light / Dark mode say what they turned on or off.
+
 ## 1.5.0
 
 **Exports Manager**
@@ -214,6 +252,7 @@ The tools are grouped the way they appear in the ribbon.
 
 | Release | Contributors |
 |---|---|
+| 2.0.0 | Sumer Alhussein |
 | 1.5.0 | Sumer Alhussein |
 | 1.4.0 | Sumer Alhussein |
 | 25.05.01 | Sumer Alhussein |
