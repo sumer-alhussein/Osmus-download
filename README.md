@@ -107,15 +107,15 @@ The tools are grouped the way they appear in the ribbon.
 | | Tool | What it does | How to use |
 |---|---|---|---|
 | <img src="docs/images/tools/Import_SheetsExcel.png" width="56" /> | **Sheets to Excel** | Saves the Excel template used to create or rename sheets (`Number`, `Name` columns). | Click, choose a folder → `Import sheets.xlsx` is created. **Shift + click** fills it with the sheets already in the model, so you can rename them. |
-| <img src="docs/images/tools/Import_CreateSheets.png" width="56" /> | **Create/ Update Sheets** | Creates the sheets listed in the template; sheet numbers that already exist get the name from the template instead. | Fill the template, click, pick the file, then pick the title block type for the new sheets. |
-| <img src="docs/images/tools/Revision_BulkRev.png" width="56" /> | **Bulk Revision** | Adds one revision to many sheets at once (sheets that already carry it are skipped). | Click, choose the revision, tick the sheets, *Finish*. **Shift + click** removes the revision from the ticked sheets instead. |
+| <img src="docs/images/tools/Import_CreateSheets.png" width="56" /> | **Create/Update Sheets** | Creates the sheets listed in the template; sheet numbers that already exist get the name from the template instead. Rows whose number or name has a character Revit does not allow are skipped and listed. | Fill the template, click, pick the file, then pick the title block type for the new sheets. |
+| <img src="docs/images/tools/Revision_BulkRev.png" width="56" /> | **Bulk Revision** | Adds one revision to many sheets at once (sheets that already carry it are skipped). | Click, choose the revision, tick the sheets, *Select*. **Shift + click** removes the revision from the ticked sheets instead. |
 | <img src="docs/images/tools/Revision_RevSet.png" width="56" /> | **Sheet Set by Revision** | Creates a sheet set (for printing/exporting) holding every sheet that carries the chosen revision. | Click, choose the revision. An existing set with that name is deleted and re-created. |
 | <img src="docs/images/tools/Sheets_SheetScaleParameter.png" width="56" /> | **Sheet Scale Parameter** | Copies each sheet's *Scale* (e.g. `1 : 100`) into a text parameter, so it can be scheduled or shown in title blocks. | Create a text parameter bound to *Sheets* (project or shared) first. Click: every sheet is selected — refine with `Ctrl + click`, `Shift + click` or the search box — choose the parameter on the left, *Copy Scale*. |
 
 ## Selection
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Select_PickWalls.png" width="56" /> | **Pick Walls** | A selection mode that only accepts walls. | Click, then click or window-select in the view; only walls are picked. Press *Finish* (or Esc) when done. |
+| <img src="docs/images/tools/Select_PickWalls.png" width="56" /> | **Pick Walls** | A selection mode that only accepts walls. | Click, then click or window-select in the view; only walls are picked. Click *Finish* on the Options Bar when done. |
 | <img src="docs/images/tools/Select_PickRooms.png" width="56" /> | **Pick Rooms** | A selection mode that only accepts rooms. | Same as *Pick Walls*, for rooms. |
 | <img src="docs/images/tools/Select_GetHidden.png" width="56" /> | **Get Hidden Elements** | Turns on *Reveal Hidden Elements* and selects everything hidden in the active view. | Open the view, click. Review the selection, then unhide or leave as is. |
 | <img src="docs/images/tools/Select_GetTtbs.png" width="56" /> | **Get Sheet Title Blocks** | Selects the title blocks of the selected sheets (for editing their parameters in one go). | Select sheets in the Project Browser, click. |
@@ -124,12 +124,12 @@ The tools are grouped the way they appear in the ribbon.
 ## Model
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Edit_EditModelText.png" width="56" /> | **Edit Text** | Find and replace text in model text elements, optionally adding a prefix and a suffix. | Select model text (or click first and pick it), then fill in *Find*, *Replace with*, *Prefix*, *Suffix* and tick *Match case* if needed. |
+| <img src="docs/images/tools/Edit_EditModelText.png" width="56" /> | **Edit Text** | Find and replace text in model text elements, optionally adding a prefix and a suffix. | Select model text (or click first and pick it). Enter the text to find and its replacement (empty deletes it), or a prefix and a suffix; *Match case* is optional. Check the preview and click *Update Text*. |
 
 ## Rooms
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Select_CenterRooms.png" width="56" /> | **Re-center Rooms** | Moves room locations (and their tags in the active view) to the centre of the room's bounding box. | Select the rooms, click. |
+| <img src="docs/images/tools/Select_CenterRooms.png" width="56" /> | **Re-center Rooms** | Moves room locations (and their tags in the active view) to the center of the room's bounding box. | Click, pick the rooms in the view, then click *Finish* on the Options Bar. |
 
 ## Annotate
 | | Tool | What it does | How to use |
@@ -144,9 +144,9 @@ The tools are grouped the way they appear in the ribbon.
 ## Cleanup
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Audit_PurgeTemplates.png" width="56" /> | **Purge View Templates** | Lists the view templates not used by any view or view type. | Click, tick what to delete, *Finish*. |
-| <img src="docs/images/tools/Audit_PurgeFilters.png" width="56" /> | **Purge View Filters** | Lists the view filters not used by any view or view template. | Click, tick what to delete, *Finish*. |
-| <img src="docs/images/tools/Audit_PurgeRooms.png" width="56" /> | **Purge Unplaced Rooms** | Lists the rooms that are not placed in the model. | Click, tick what to delete, *Finish*. |
+| <img src="docs/images/tools/Audit_PurgeTemplates.png" width="56" /> | **Purge View Templates** | Lists the view templates not used by any view or view type. | Click, tick what to delete, *Select*. |
+| <img src="docs/images/tools/Audit_PurgeFilters.png" width="56" /> | **Purge View Filters** | Lists the view filters not used by any view or view template. | Click, tick what to delete, *Select*. |
+| <img src="docs/images/tools/Audit_PurgeRooms.png" width="56" /> | **Purge Unplaced Rooms** | Lists the rooms that are not placed in the model. | Click, tick what to delete, *Select*. |
 | <img src="docs/images/tools/Audit_DeletePatterns.png" width="56" /> | **Delete Imported Patterns** | Deletes every fill and line pattern whose name starts with *Import* (left behind by CAD imports). | Click — there is no list; deletion is immediate (use *Undo* if needed). |
 
 ## Monitoring
@@ -157,7 +157,7 @@ The tools are grouped the way they appear in the ribbon.
 ## Windows
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Settings_ColourTabs.png" width="56" /> | **Colored Tabs** | Colours the view tabs by document, so views of different models (and links) are easy to tell apart. Revit 2023 and 2024. | Click to turn it on or off; remembered between sessions. After turning it off, restart Revit to get the default tab colours back. |
+| <img src="docs/images/tools/Settings_ColourTabs.png" width="56" /> | **Colored Tabs** | Colors the view tabs by document, so views of different models (and links) are easy to tell apart. Revit 2023 and 2024 only: later versions do not let add-ins color the tabs, so the button is not on their ribbon. | Click to turn it on or off; remembered between sessions. After turning it off, restart Revit to get the default tab colors back. |
 | <img src="docs/images/tools/Settings_UiToggle.png" width="56" /> | **Light / Dark mode** | Switches the Revit user interface between light and dark theme (Revit 2024 and later). | Click to switch. **Shift + click** also sets the drawing canvas to dark. |
 
 ## Export
@@ -194,6 +194,21 @@ The tools are grouped the way they appear in the ribbon.
 </p>
 
 # Changelog
+
+## 2.0.2
+
+- When a tool meets an unexpected error, Osmus now says which tool could not finish and why, undoes what it had
+  changed, and offers the log and a link to report the problem, instead of Revit's *External Tool Failure*.
+- *Edit Text* has a new dialog with a preview. Leaving *Find* empty with a replacement no longer stops the tool: *Find*
+  only narrows the texts to edit, an empty replacement deletes the text found, and *Update Text* stays disabled while
+  nothing would change.
+- *Create/Update Sheets* skips (and lists) the rows whose number or name contains a character Revit does not allow,
+  instead of stopping the import; an empty name keeps the sheet's name.
+- Buttons are only available where their tool works, as their tooltips say. The Exports Manager needs an open
+  project or family, and *Colored Tabs* is only on the ribbon of Revit 2023 and 2024.
+- Exports Manager: a *Save Location* without its drive is refused with an explanation.
+- Esc while picking no longer shows an error; clearer tooltips and messages; *Create/Update Sheets* without the stray space.
+- New [privacy policy](PRIVACY.md) in plain words.
 
 ## 2.0.1
 
@@ -259,6 +274,7 @@ The tools are grouped the way they appear in the ribbon.
 
 | Release | Contributors |
 |---|---|
+| 2.0.2 | Sumer Alhussein |
 | 2.0.1 | Sumer Alhussein |
 | 2.0.0 | Sumer Alhussein |
 | 1.5.0 | Sumer Alhussein |
@@ -270,8 +286,8 @@ Osmus started from the [geeWiz](https://github.com/aussieBIMguru/geeWiz) add-in 
 
 # License and support
 
-Osmus is provided under the [end user license agreement](LICENSE.txt). It is an independent add-in and is not
-affiliated with or endorsed by Autodesk, Inc.
+Osmus is provided under the [end user license agreement](LICENSE.txt). It collects no personal or project data: see the
+[privacy policy](PRIVACY.md). It is an independent add-in and is not affiliated with or endorsed by Autodesk, Inc.
 
 Questions, bugs and ideas: [open an issue](https://github.com/sumer-alhussein/Osmus-download/issues) or write to
 **sumer.alhussein@gmail.com**.
