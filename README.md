@@ -195,6 +195,15 @@ The tools are grouped the way they appear in the ribbon.
 
 # Changelog
 
+## 2.0.3
+
+- Every Osmus window shows the Osmus logo in its title bar. Like Revit's own dialogs, Osmus dialogs no longer appear in
+  the Windows taskbar, where they showed Revit's logo.
+- Excel files (*Sheets to Excel*, *Create/Update Sheets*, *Schedule to Excel*) are read and written with Microsoft's
+  Open XML SDK, and Osmus ships only current Microsoft components: smaller, with fewer third-party files.
+- *Sheets to Excel* and *Schedule to Excel* write a new file; *Create/Update Sheets* only offers .xlsx/.xlsm workbooks
+  (older .xls files could never be read) and says so when a file cannot be read.
+
 ## 2.0.2
 
 - When a tool meets an unexpected error, Osmus now says which tool could not finish and why, undoes what it had
@@ -274,6 +283,7 @@ The tools are grouped the way they appear in the ribbon.
 
 | Release | Contributors |
 |---|---|
+| 2.0.3 | Sumer Alhussein |
 | 2.0.2 | Sumer Alhussein |
 | 2.0.1 | Sumer Alhussein |
 | 2.0.0 | Sumer Alhussein |
