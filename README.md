@@ -9,7 +9,8 @@
   <a href="#tools">Tools</a> ·
   <a href="#changelog">Changelog</a> ·
   <a href="#contributors">Contributors</a> ·
-  <a href="https://github.com/sumer-alhussein/Osmus-download/issues">Report an issue</a>
+  <a href="https://github.com/sumer-alhussein/Osmus-download/issues">Report an issue</a> ·
+  <a href="https://www.linkedin.com/company/osmus-tools/">LinkedIn</a>
 </p>
 
 # About Osmus
@@ -27,7 +28,8 @@ productivity tools for BIM managers, architects and engineers:
   and an export monitor to follow every file, cancel, and retry the ones that failed.
 - **Automatic updates** — new versions are downloaded in the background and installed when Revit closes.
 
-Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com**
+Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com** · Follow Osmus on
+[LinkedIn](https://www.linkedin.com/company/osmus-tools/) for new releases.
 
 # Installation
 
