@@ -26,6 +26,8 @@ productivity tools for BIM managers, architects and engineers:
 - **Session helpers** — colour view tabs per document, switch the UI theme, and a *Warden* that double-checks risky commands.
 - **Exports Manager** — batch export sheets and views to **PDF, DWG and DWF/DWFx** with saved profiles and custom file naming rules,
   and an export monitor to follow every file, cancel, and retry the ones that failed.
+- **Silk** (beta, Revit 2024) — ask in plain words; Silk builds a Dynamo graph, shows what it would change, and changes
+  nothing until you approve.
 - **Automatic updates** — new versions are downloaded in the background and installed when Revit closes.
 
 Osmus is developed by Sumer Alhussein. Contact: **sumer.alhussein@gmail.com** · Follow Osmus on
@@ -102,7 +104,7 @@ The tools are grouped the way they appear in the ribbon.
 ## Osmus
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/Osmus.png" width="56" /> | **About** | Shows the installed version, the Revit version and links to this page, the releases, documentation, license and contact — and the [updates](#updates): status, *Check now* and the *Update automatically* switch. | Click *About*. |
+| <img src="docs/images/Osmus.png" width="56" /> | **About** | Shows the installed version, the Revit version and links to this page, the releases, documentation, license and contact — and the [updates](#updates): status, *Check now* and the *Update automatically* switch. In Revit 2024 it also has the *Enable beta features* switch, which turns on [Silk](#silk). | Click *About*. Beta features start with Revit: restart Revit after switching them on or off. |
 | <img src="docs/images/tools/General_Update.png" width="56" /> | **Update ready** | Appears when a new version of Osmus has been downloaded. | Click to restart Revit and install it now; otherwise it installs when you close Revit. |
 
 ## Sheet Composition
@@ -195,7 +197,53 @@ The tools are grouped the way they appear in the ribbon.
   <img src="docs/images/export-monitor.png" width="620" alt="The export monitor while exporting" />
 </p>
 
+## Silk
+| | Tool | What it does | How to use |
+|---|---|---|---|
+| <img src="docs/images/tools/Silk_SilkPane.png" width="56" /> | **Silk** (beta) | Turns a request in plain words into a Dynamo graph, shows what it would change, and changes nothing until you approve. Revit 2024 only. | Turn on *Enable beta features* in *About* and restart Revit, then click *Silk* to open its pane. See below. |
+
+### Using Silk
+
+Silk is a beta feature: it is still being tested, and it may change before it is final.
+
+1. **Set up the prompt box** — in the pane's settings, enter the address and model of a language model service and
+   your API key for it. Any service that speaks the OpenAI chat API works; the default is DeepSeek
+   (`https://api.deepseek.com`, `deepseek-chat`). The key is kept on your computer, encrypted for your Windows user.
+   Agree to send your requests to the service (see the [privacy policy](PRIVACY.md) for what is sent).
+2. **Ask** — type what you want in English or Arabic, in a model you can try things in (a copy, at first).
+3. **Check, then approve** — before anything changes, Silk runs the graph, undoes it and shows what it would change.
+   *Apply* runs it as one undo step; *Discard* drops it. A request that only reads the model is done after that run.
+   A graph that acts outside the model (it writes a file, or isolates elements in a view) is not run before you
+   approve it. When a request does not say what to change, Silk asks; when no graph can do it, it says so.
+4. **Library** — save the graphs you want to run again, and import your own Dynamo graphs (`.dyn`). Silk runs a graph
+   it cannot read node by node as it is, after you approve.
+
+Requests to try:
+
+| Reads | Changes |
+|---|---|
+| `How many doors are in the model?` | `Number the doors D-1, D-2, ... in their Mark parameter.` |
+| `List every level with its elevation.` | `Copy each door's Mark into its Comments.` |
+| `Which doors have an empty Mark?` | `Rename every sheet to upper case.` |
+| `What is the total length of all walls?` | `Write "Checked" in the Comments of every wall.` |
+| `List the rooms whose area is above 20 square meters.` | `Draw three model lines 1000 apart along X, each 3000 long.` |
+| `Find the walls taller than 3 meters and list their IDs.` | `Give all doors the same Mark "X".` |
+
+In Arabic: `كم عدد الأبواب في النموذج؟` (how many doors are in the model) or `رقّم الأبواب بالشكل D-1 و D-2 ... في باراميتر Mark.`
+(number the doors D-1, D-2, … in their Mark).
+
+Silk does not get every request right yet: read what it would change before you apply it.
+
 # Changelog
+
+## 2.1.0
+
+- **Beta features**: *About* has an *Enable beta features* switch, off by default. Beta features are tools that are
+  still being tested; they start with Revit, so the switch takes effect the next time Revit starts.
+- **[Silk](#silk)** (beta, Revit 2024): ask in plain words, in English or Arabic; Silk builds a Dynamo graph, shows
+  what it would change, and changes nothing until you approve. It uses a language model service you choose, with your
+  own API key, and asks for your consent before it sends anything (see the [privacy policy](PRIVACY.md)). Its library
+  keeps the graphs you save and imports your Dynamo graphs.
 
 ## 2.0.3
 
@@ -285,6 +333,7 @@ The tools are grouped the way they appear in the ribbon.
 
 | Release | Contributors |
 |---|---|
+| 2.1.0 | Sumer Alhussein |
 | 2.0.3 | Sumer Alhussein |
 | 2.0.2 | Sumer Alhussein |
 | 2.0.1 | Sumer Alhussein |
@@ -298,7 +347,8 @@ Osmus started from the [geeWiz](https://github.com/aussieBIMguru/geeWiz) add-in 
 
 # License and support
 
-Osmus is provided under the [end user license agreement](LICENSE.txt). It collects no personal or project data: see the
+Osmus is provided under the [end user license agreement](LICENSE.txt). It collects no personal or project data; Silk,
+a beta feature, sends your requests to the language model service you choose, once you agree: see the
 [privacy policy](PRIVACY.md). It is an independent add-in and is not affiliated with or endorsed by Autodesk, Inc.
 
 Questions, bugs and ideas: [open an issue](https://github.com/sumer-alhussein/Osmus-download/issues) or write to
