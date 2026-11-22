@@ -234,6 +234,8 @@ In Arabic: `كم عدد الأبواب في النموذج؟` (how many doors ar
 
 Silk does not get every request right yet: read what it would change before you apply it.
 
+Osmus testers can also connect an AI app to Silk: see [Silk and AI apps (MCP)](docs/silk-mcp.md).
+
 # Changelog
 
 ## 2.1.0
