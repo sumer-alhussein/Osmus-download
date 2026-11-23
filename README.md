@@ -114,7 +114,7 @@ The tools are grouped the way they appear in the ribbon.
 | <img src="docs/images/tools/Import_CreateSheets.png" width="56" /> | **Create/Update Sheets** | Creates the sheets listed in the template; sheet numbers that already exist get the name from the template instead. Rows whose number or name has a character Revit does not allow are skipped and listed. | Fill the template, click, pick the file, then pick the title block type for the new sheets. |
 | <img src="docs/images/tools/Revision_BulkRev.png" width="56" /> | **Bulk Revision** | Adds one revision to many sheets at once (sheets that already carry it are skipped). | Click, choose the revision, tick the sheets, *Select*. **Shift + click** removes the revision from the ticked sheets instead. |
 | <img src="docs/images/tools/Revision_RevSet.png" width="56" /> | **Sheet Set by Revision** | Creates a sheet set (for printing/exporting) holding every sheet that carries the chosen revision. | Click, choose the revision. An existing set with that name is deleted and re-created. |
-| <img src="docs/images/tools/Sheets_SheetScaleParameter.png" width="56" /> | **Sheet Scale Parameter** | Copies each sheet's *Scale* (e.g. `1 : 100`) into a text parameter, so it can be scheduled or shown in title blocks. | Create a text parameter bound to *Sheets* (project or shared) first. Click: every sheet is selected — refine with `Ctrl + click`, `Shift + click` or the search box — choose the parameter on the left, *Copy Scale*. |
+| <img src="docs/images/tools/Sheets_SheetScaleParameter.png" width="56" /> | **Sheet Scale Parameter** | Copies each sheet's *Scale* into a parameter, so it can be scheduled or shown in title blocks: a Text parameter receives it as Revit shows it (e.g. `1 : 100`), a Number or Integer parameter its number (`100`). | Create a Text (or Number) parameter bound to *Sheets* (project or shared) first. Click: every sheet is selected — refine with `Ctrl + click`, `Shift + click` or the search box — choose the parameter on the left (each shows whether it is shared or a project parameter, and its type), *Copy Scale*. |
 
 ## Selection
 | | Tool | What it does | How to use |
@@ -156,12 +156,12 @@ The tools are grouped the way they appear in the ribbon.
 ## Monitoring
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Settings_Warden.png" width="56" /> | **Warden** | Asks *"are you sure?"* before commands that often hurt model health: *Model In-Place*, *Import CAD* and *Paint*. | Click to turn it on or off; the state is remembered the next time Revit starts. |
+| <img src="docs/images/tools/Settings_Warden.png" width="56" /> | **Warden** | Asks *"are you sure?"* before commands that often hurt model health: *Model In-Place*, *Import CAD* and *Paint*. | Click to turn it on or off; the state is remembered the next time Revit starts. While Warden is on, its button shows a blue exclamation. |
 
 ## Windows
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Settings_ColourTabs.png" width="56" /> | **Colored Tabs** | Colors the view tabs by document, so views of different models (and links) are easy to tell apart. Revit 2023 and 2024 only: later versions do not let add-ins color the tabs, so the button is not on their ribbon. | Click to turn it on or off; remembered between sessions. After turning it off, restart Revit to get the default tab colors back. |
+| <img src="docs/images/tools/Settings_ColourTabs.png" width="56" /> | **Colored Tabs** | Colors the view tabs by document, so views of different models (and links) are easy to tell apart. Revit 2023 and 2024 only: later versions do not let add-ins color the tabs, so the button is not on their ribbon. | Click to turn it on or off; remembered between sessions. Turning it off gives the tabs Revit's colors back. |
 | <img src="docs/images/tools/Settings_UiToggle.png" width="56" /> | **Light / Dark mode** | Switches the Revit user interface between light and dark theme (Revit 2024 and later). | Click to switch. **Shift + click** also sets the drawing canvas to dark. |
 
 ## Export
@@ -172,9 +172,10 @@ The tools are grouped the way they appear in the ribbon.
 
 ### Using the Exports Manager
 
-1. **Profile** — pick a profile or *More → Save As* to create one. Everything in the window (formats, options,
-   naming rules, save location, the list shown) is stored in the profile. With *Auto-save profile on Export* ticked,
-   the profile is saved every time you export.
+1. **Profile** — pick a profile or *More → Save As* to create one; the first time, the window's settings are saved as
+   a *Default* profile. Everything in the window (formats, options, naming rules, save location, the list shown) is
+   stored in the profile. With *Auto-save profile on Export* ticked (the default), the profile is saved every time you
+   export.
 2. **Save Location** — the folder that receives the files; each format goes into its own `PDF`, `DWG` or `DWF` sub-folder.
    Leave it empty to export to `Documents\Osmus\<project name>`.
 3. **Select Model** — the host model or one of its loaded links.
@@ -200,7 +201,7 @@ The tools are grouped the way they appear in the ribbon.
 ## Silk
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Silk_SilkPane.png" width="56" /> | **Silk** (beta) | Turns a request in plain words into a Dynamo graph, shows what it would change, and changes nothing until you approve. Revit 2024 only. | Turn on *Enable beta features* in *About* and restart Revit, then click *Silk* to open its pane. See below. |
+| <img src="docs/images/tools/Silk_SilkPane.png" width="56" /> | **Silk** (beta) | An assistant for Revit, in plain words: it reads the model, acts on what you see (selects, opens a view, zooms), and proposes changes, as direct edits or a Dynamo graph, that change nothing until you approve. Revit 2024 only. | Turn on *Enable beta features* in *About* and restart Revit, then click *Silk* to open its pane. See below. |
 
 ### Using Silk
 
@@ -211,12 +212,15 @@ Silk is a beta feature: it is still being tested, and it may change before it is
    (`https://api.deepseek.com`, `deepseek-chat`). The key is kept on your computer, encrypted for your Windows user.
    Agree to send your requests to the service (see the [privacy policy](PRIVACY.md) for what is sent).
 2. **Ask** — type what you want in English or Arabic, in a model you can try things in (a copy, at first).
-3. **Check, then approve** — before anything changes, Silk runs the graph, undoes it and shows what it would change.
-   *Apply* runs it as one undo step; *Discard* drops it. A request that only reads the model is done after that run.
-   A graph that acts outside the model (it writes a file, or isolates elements in a view) is not run before you
-   approve it. When a request does not say what to change, Silk asks; when no graph can do it, it says so.
-4. **Library** — save the graphs you want to run again, and import your own Dynamo graphs (`.dyn`). Silk runs a graph
-   it cannot read node by node as it is, after you approve.
+3. **Check, then approve** — before anything changes, Silk runs the change, undoes it and shows what it would change.
+   *Approve* applies it as one undo step; *Discard* drops it. A request that only reads the model is done after that
+   run. A graph that acts outside the model (it writes a file, or isolates elements in a view) is not run before you
+   approve it. When a request does not say what to change, Silk asks.
+4. **Viewer** — each step of a request opens what it read, as a table or a chart. The tries of one graph are versions
+   in one tab, and *Run again* runs a graph again. Paths and commands in an answer have a *Copy* button.
+5. **Library** — save the graphs you want to run again, and import your own Dynamo graphs (`.dyn`). Every workflow
+   and block has *Run*, and *Use in a request*, which starts a request that names it. Silk runs a graph it cannot read
+   node by node as it is, after you approve.
 
 Requests to try:
 
@@ -237,6 +241,23 @@ Silk does not get every request right yet: read what it would change before you 
 Osmus testers can also connect an AI app to Silk: see [Silk and AI apps (MCP)](docs/silk-mcp.md).
 
 # Changelog
+
+## 2.1.1
+
+- **[Sheet Scale Parameter](#sheet-composition)** copies each sheet's own *Scale* into the parameter you choose: a Text
+  parameter receives it as Revit shows it, a Number or Integer parameter its number. The list shows whether each
+  parameter is shared or a project parameter, with its type, and the message says which sheets were skipped and why.
+- **[Colored Tabs](#windows)** keeps its colors when Revit creates its view tabs again (a document closes, tabs
+  overflow, a view moves to another pane), and turning it off gives the tabs Revit's colors back.
+- **[Exports Manager](#using-the-exports-manager)**: the first time, the window's settings are saved as a *Default*
+  profile; *Auto-save profile on Export* is on by default; *Combine into a single file* no longer shows a warning.
+- **[Warden](#monitoring)**: its button shows a blue exclamation while Warden is on.
+- **[Silk](#silk)** (beta, Revit 2024) is an assistant for Revit: it reads the model, acts on what you see (selects,
+  opens a view, zooms, isolates) and proposes changes (parameters, moving, copying, types, deleting; new levels, grids,
+  sheets, views, tags, text, walls, floors, doors, windows and dimensions), which it dry-runs and shows before you
+  approve them as one undo step. Its viewer shows what each step read as tables and charts, keeps the versions of a
+  graph in one tab, and answers show paths and commands with a *Copy* button. In the library, *Run* and *Use in a
+  request* work for workflows and blocks.
 
 ## 2.1.0
 
@@ -335,6 +356,7 @@ Osmus testers can also connect an AI app to Silk: see [Silk and AI apps (MCP)](d
 
 | Release | Contributors |
 |---|---|
+| 2.1.1 | Sumer Alhussein |
 | 2.1.0 | Sumer Alhussein |
 | 2.0.3 | Sumer Alhussein |
 | 2.0.2 | Sumer Alhussein |
