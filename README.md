@@ -156,7 +156,7 @@ The tools are grouped the way they appear in the ribbon.
 ## Monitoring
 | | Tool | What it does | How to use |
 |---|---|---|---|
-| <img src="docs/images/tools/Settings_Warden.png" width="56" /> | **Warden** | Asks *"are you sure?"* before commands that often hurt model health: *Model In-Place*, *Import CAD* and *Paint*. | Click to turn it on or off; the state is remembered the next time Revit starts. While Warden is on, its button shows a blue exclamation. |
+| <img src="docs/images/tools/Settings_Warden.png" width="56" /> | **Warden** | Asks *"are you sure?"* before commands that often hurt model health: *Model In-Place*, *Import CAD* and *Paint*. | Click to turn it on or off (it is off at first); the state is remembered the next time Revit starts. While Warden is on, its button shows a blue exclamation. |
 
 ## Windows
 | | Tool | What it does | How to use |
@@ -217,10 +217,15 @@ Silk is a beta feature: it is still being tested, and it may change before it is
    run. A graph that acts outside the model (it writes a file, or isolates elements in a view) is not run before you
    approve it. When a request does not say what to change, Silk asks.
 4. **Viewer** — each step of a request opens what it read, as a table or a chart. The tries of one graph are versions
-   in one tab, and *Run again* runs a graph again. Paths and commands in an answer have a *Copy* button.
+   in one tab, and *Run again* runs a graph again. Paths and commands in an answer have a *Copy* button. An answer
+   with values for several items (counts, areas) shows them as a table whose *Copy* button pastes into Excel or Word,
+   and Silk offers to create a schedule of them in Revit, which you approve like any change.
 5. **Library** — save the graphs you want to run again, and import your own Dynamo graphs (`.dyn`). Every workflow
    and block has *Run*, and *Use in a request*, which starts a request that names it. Silk runs a graph it cannot read
    node by node as it is, after you approve.
+6. **Activity log** — Silk keeps a log of what it does on your computer, to find and fix problems; it never leaves
+   your computer by itself. To report a problem, click *Save as zip…* in the pane's settings and attach the zip to
+   your email or issue. *Clear…* deletes the log, and a setting turns it off (see the [privacy policy](PRIVACY.md)).
 
 Requests to try:
 
@@ -232,6 +237,7 @@ Requests to try:
 | `What is the total length of all walls?` | `Write "Checked" in the Comments of every wall.` |
 | `List the rooms whose area is above 20 square meters.` | `Draw three model lines 1000 apart along X, each 3000 long.` |
 | `Find the walls taller than 3 meters and list their IDs.` | `Give all doors the same Mark "X".` |
+| `What is the area of each room on Level 1?` | `Create a schedule of the doors, counted by type.` |
 
 In Arabic: `كم عدد الأبواب في النموذج؟` (how many doors are in the model) or `رقّم الأبواب بالشكل D-1 و D-2 ... في باراميتر Mark.`
 (number the doors D-1, D-2, … in their Mark).
@@ -241,6 +247,18 @@ Silk does not get every request right yet: read what it would change before you 
 Osmus testers can also connect an AI app to Silk: see [Silk and AI apps (MCP)](docs/silk-mcp.md).
 
 # Changelog
+
+## 2.1.2
+
+- **[Colored Tabs](#windows)** colors the tabs again, the tabs of a model not saved yet (*Project1*) too, and gives a
+  tab its color back whenever Revit creates it again.
+- **[Warden](#monitoring)** is off by default. This update turns it off once for everyone: if you use it, turn it on
+  again with its button, and Osmus keeps your choice.
+- **[Silk](#silk)** (beta, Revit 2024): an answer with values for several items shows them as a table with a *Copy*
+  button, for Excel or Word, and Silk offers to create a Revit schedule of them, which you approve like any change.
+  Silk can orbit a 3D view to look at a model from all sides, and knows where each open model is kept. It keeps an
+  activity log on your computer, which you can save as a zip to send with a problem report (see the
+  [privacy policy](PRIVACY.md)).
 
 ## 2.1.1
 
@@ -356,6 +374,7 @@ Osmus testers can also connect an AI app to Silk: see [Silk and AI apps (MCP)](d
 
 | Release | Contributors |
 |---|---|
+| 2.1.2 | Sumer Alhussein |
 | 2.1.1 | Sumer Alhussein |
 | 2.1.0 | Sumer Alhussein |
 | 2.0.3 | Sumer Alhussein |

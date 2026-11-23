@@ -1,6 +1,6 @@
 # Osmus Privacy Policy
 
-*Last updated: November 22, 2026*
+*Last updated: November 23, 2026*
 
 Osmus is an add-in for Autodesk® Revit® developed by Sumer Alhussein ("we", "us"). This policy explains what
 information Osmus handles and where it goes.
@@ -25,8 +25,9 @@ Osmus saves these files on your computer only:
 - **Updates**: downloaded installers in `%TEMP%\OsmusUpdate`, and the updater with its last result in
   `%LocalAppData%\Osmus`.
 - **Silk**, once you use it: its settings and the graphs you save in `%AppData%\Osmus\Silk` (the API key you enter is
-  kept there, encrypted for your Windows user), the graphs it previews, the records of its runs and its pane's browser
-  data in `%LocalAppData%\Osmus\Silk`, and the graphs you open in Dynamo in `Documents\Silk`.
+  kept there, encrypted for your Windows user), the graphs it previews, the records of its runs, its activity log (see
+  [Silk](#silk-beta-feature) below) and its pane's browser data in `%LocalAppData%\Osmus\Silk`, and the graphs you open
+  in Dynamo in `Documents\Silk`.
 
 Uninstalling Osmus removes the add-in; you can delete these folders by hand.
 
@@ -50,12 +51,16 @@ If you downloaded Osmus from the Autodesk App Store, Autodesk handles that downl
 ## Silk (beta feature)
 
 Silk is off until you turn on *Enable beta features* in *About* (Revit 2024). Its prompt box sends nothing until you
-enter a language model service, with your own API key, in the pane's settings, and agree to send it your requests.
+enter a language model service, with your own API key, in the pane's settings, and agree to send it what is listed
+below.
 
 Each request then goes to that service with a summary of the model open in Revit: the model's name, its levels and
 their elevations, how many elements of each category it has, and the names of its family types and parameters, with
-the titles and descriptions of the graphs saved in your Silk library. Nothing else from the model is sent. The service
-answers with a graph, which Silk shows you before anything in the model changes.
+the titles and descriptions of the graphs saved in your Silk library. While the service works on the request, it asks
+Silk's tools to read the model, and what they read goes to it too: the names and IDs of elements, views and sheets,
+parameter values, what is selected, what a view shows, and warnings. Nothing else from the model is sent. Pictures of
+Revit's views go to the service only if you say in the settings that its model can see images and agree to send them.
+The service answers in words, or with changes, which Silk shows you before anything in the model changes.
 
 The service is the one you chose, under your own account with it: it handles what you send under its own terms and
 privacy policy, and we receive none of it. You can withdraw your consent or forget the key in the pane's settings at
@@ -63,6 +68,14 @@ any time, or turn beta features off.
 
 For Osmus testers only, Silk also lets AI apps on the same computer use it (through the Model Context Protocol), over
 a connection that only your Windows user can open; it is not available to other accounts.
+
+Silk keeps a log of its activity on your computer, in `%LocalAppData%\Osmus\Silk\logs`, to find and fix problems: your
+requests and Silk's steps (the tools called, what they read, in part, and what they changed or why they failed), the
+changes it proposed and whether you applied them, and which versions of Osmus, Revit, Windows and .NET they ran on,
+with a random ID of the installation. It holds no API key and writes your user folder as `%USERPROFILE%`. It never
+leaves your computer by itself: you can save it as a zip in the pane's settings and send it to us when you report a
+problem, and we then use it only to answer you and improve Osmus. You can turn it off or clear it in the pane's
+settings at any time; it keeps 180 days at most.
 
 ## Support requests
 
